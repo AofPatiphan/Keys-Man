@@ -1,7 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 import Tabs from './src/navigation/tabs';
+import 'react-native-gesture-handler';
 
 export default function App() {
     const Stack = createStackNavigator();

@@ -2,22 +2,25 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 
-function ProfileCard() {
+function ProfileCard({ item, navigation }) {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity
+            style={styles.container}
+            onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
+        >
             <Image
                 style={styles.profileImg}
                 source={{
-                    uri: 'https://res.cloudinary.com/dbtlgaii3/image/upload/v1644699867/dde7b031765bbf67d0a8a3530e56dbfa_vrg30d.jpg',
+                    uri: `${item.profileUrl}`,
                 }}
             />
-            <View>
+            <View style={{ flex: 1, borderWidth: 1 }}>
                 <View style={styles.profileDetail}>
-                    <Text style={styles.cardUsername}>Aofzzz</Text>
-                    <Text style={{ marginLeft: 100 }}>ProfileCard</Text>
+                    <Text style={styles.cardUsername}>{item.username}</Text>
+                    <Text>2m</Text>
                 </View>
                 <View style={{ marginTop: 15 }}>
-                    <Text>Hello</Text>
+                    <Text>{item.caption}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     profileImg: {
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         height: 60,
         width: 60,
         marginRight: 30,
@@ -51,5 +54,6 @@ const styles = StyleSheet.create({
     profileDetail: {
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'space-between',
     },
 });
